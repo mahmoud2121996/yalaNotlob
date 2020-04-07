@@ -31622,3 +31622,51 @@ Processing by UserController#index as HTML
 Completed 200 OK in 130ms (Views: 90.4ms | ActiveRecord: 10.9ms | Allocations: 11172)
 
 
+Started GET "/" for 127.0.0.1 at 2020-04-07 19:10:17 +0200
+  [1m[35m (2.0ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by UserController#index as HTML
+Completed 401 Unauthorized in 172ms (ActiveRecord: 0.0ms | Allocations: 1569)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-04-07 19:10:18 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 3.9ms | Allocations: 222)
+  Rendered devise/shared/_links.html.erb (Duration: 23.2ms | Allocations: 659)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 98.1ms | Allocations: 4803)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 587ms (Views: 485.1ms | ActiveRecord: 10.7ms | Allocations: 34649)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2020-04-07 19:23:37 +0200
+  [1m[35m (1.0ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 15)
+  Rendered devise/shared/_links.html.erb (Duration: 1.5ms | Allocations: 128)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 48.3ms | Allocations: 2556)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 233ms (Views: 210.2ms | ActiveRecord: 0.0ms | Allocations: 11747)
+
+
+Started POST "/users?html%5Bmultipart%5D=true" for 127.0.0.1 at 2020-04-07 19:24:41 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"ZweBB/NjxfocWQx7SaVfz1YZltliiYs81NeitRMQwXbhf6g0UMP7W/cWOb18ouoD+dq6ZyqNxRfzKiv/rQPeXA==", "user"=>{"name"=>"iron", "email"=>"iron@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up", "html"=>{"multipart"=>"true"}}
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'iron@gmail.com' LIMIT 1[0m
+  [1m[36mUser Create (2.9ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('iron', 'iron@gmail.com', '$2a$11$0P./7k8uZ22f2ELJBmwBH.o5xco7X5MK8K6bJ6Xcdj2elppXSkDuC', '2020-04-07 17:24:42.820602', '2020-04-07 17:24:42.820602')[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 1075ms (ActiveRecord: 15.7ms | Allocations: 11545)
+
+
+Started GET "/" for 127.0.0.1 at 2020-04-07 19:24:42 +0200
+Processing by UserController#index as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 11 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering user/index.html.erb within layouts/application
+  Rendered user/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 86)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 178ms (Views: 158.5ms | ActiveRecord: 2.1ms | Allocations: 10777)
+
+

@@ -7,6 +7,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_attached_file :avatar
+  has_attached_file :avatar, :default_url => "/system/users/avatars/000/000/default/user.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 end
