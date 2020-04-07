@@ -3,7 +3,7 @@
   <style>
     body{
       margin-left: 450px;
-      margin-top: 85px;
+      margin-top: 80px;
     }
     .form-group{
       width: 400px;
@@ -24,8 +24,16 @@
   </style>
 </head>
 <body>
+
+
+<%- flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, class: "alert alert-danger", :style => "margin-right:500px;text-align:center;margin-left:100px;", :id => "flash_#{name}" if msg.is_a?(String) %>
+<%- end -%>
+
 <h2>Log in</h2>
+
 <div class="makeborder">
+
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -49,9 +57,9 @@
       <div class="actions">
         <%= f.submit "Log in", class: "btn btn-success btn-lg submitborder" %>
       </div>
+      <%= render "devise/shared/links" %>
   <% end %>
 
-  <%= render "devise/shared/links" %>
 </div>
 </body>
 </html>

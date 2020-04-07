@@ -5,8 +5,12 @@ ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
-#device
+#device gem
 gem 'devise'
+#paperclip gem
+gem 'paperclip', '~> 6.1'
+#rmagick gem
+gem 'rmagick'
 #mysql2
 gem 'mysql2', '~> 0.5.2'
 #bootstrap4
