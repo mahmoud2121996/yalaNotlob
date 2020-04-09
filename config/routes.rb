@@ -5,4 +5,10 @@ Rails.application.routes.draw do
   default_url_options :host => "localhost:3000"
   devise_for :users
   root to: 'user#index'
+
+  get '/friends', to: 'friend#friends_index'
+
+  post '/friends', to: 'friend#add_friend'
+  
+  delete '/friends', to: 'friend#remove_friend'
 end
