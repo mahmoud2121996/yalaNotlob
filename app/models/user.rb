@@ -9,4 +9,7 @@ class User < ApplicationRecord
 
   has_attached_file :avatar, :default_url => "/system/users/avatars/000/000/default/user.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
+  has_many :friends
+
 end
