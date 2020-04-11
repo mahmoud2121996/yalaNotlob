@@ -28,6 +28,10 @@ class OrdersController < ApplicationController
   end
 
   def update
+    @order = Order.find(params[:id])
+    @order.status = 2
+    @order.save
+    redirect_to :orders
   end
 
   def destroy
