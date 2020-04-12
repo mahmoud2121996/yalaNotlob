@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.all()
+    @user_id = current_user.id
+    @orders = current_user.orders
   end
 
   def create
@@ -29,13 +30,17 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order.status = 2
+    @order.status = 1
     @order.save
     redirect_to :orders
   end
 
   def destroy
+    @order = Order.find(params[:id])
+    @order.delete
+    redirect_to :orders
   end
+
   private 
   def order_params
     params.require(:order).permit(:order_for, :restaurant ,:invited,:menu_pic)
