@@ -12,14 +12,23 @@ class FriendController < ApplicationController
       @friend = Friend.new
       @friend.user_id = current_user.id
       @friend.friend_id = @user.id
-      @friend.save
-      redirect_to friends_path
+      result = @friend.save
+
+      if result
+        redirect_to friends_path, notice: "Added successfully."
+      else 
+        redirect_to friends_path, notice: "Something went wrong, plese try again."
+      end
     end
   
     def remove_friend
       @friend = Friend.find_by(friend_id: params[:format])
-      @friend.destroy
-      redirect_to friends_path
+      result = @friend.destroy
+      if result
+        redirect_to friends_path, notice: "Removed successfully."
+      else 
+        redirect_to friends_path, notice: "Something went wrong, plese try again."
+      end
     end
   
   end
