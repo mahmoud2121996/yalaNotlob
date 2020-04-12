@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   
   delete '/friends', to: 'friend#remove_friend'
 
+  get '/all_notifications', to: 'notifications#showAllNotifications'
+
   resources :notifications do
     collection do
       post :mark_as_read
