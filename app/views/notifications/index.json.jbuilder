@@ -1,7 +1,9 @@
 json.array! @notifications do |notification|
     json.id notification.id
     json.from notification.from.name
+    json.img notification.from.avatar.url
     json.to notification.to.name
+    json.at notification.created_at
     json.notification_type notification.notification_type
     if notification.notification_type  === 1
         json.content notification.from.name+" added you as a friend"
