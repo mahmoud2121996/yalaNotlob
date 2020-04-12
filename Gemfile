@@ -1,12 +1,16 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 #device gem
 gem 'devise'
+#omniauth gem
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 #paperclip gem
 gem 'paperclip', '~> 6.1'
 #rmagick gem
@@ -18,7 +22,7 @@ gem 'bootstrap', '~> 4.4.1'
 #jquery
 gem 'jquery-rails'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+# gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -67,4 +71,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-gem 'rmagick'
+# gem 'rmagick'
+# gem 'rmagick', '~> 4.1', '>= 4.1.1'
+gem 'font-awesome-rails', '~> 4.7.0'

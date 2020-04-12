@@ -1,0 +1,49 @@
+<div class="center">
+    <h1>Groups</h1>
+
+    <!-- Show error msgs -->
+    <% if flash[:group_errors]%>
+        <div class="alert alert-danger">
+            <% flash[:group_errors].each do |msg|%>
+            <li>
+                <%= msg %>
+            </li>
+            <% end %>
+        </div>
+    <% end %>
+    <% if flash[:group_error]%>
+        <div class="alert alert-danger">
+            <li>
+                <%= flash[:group_error] %>
+            </li>
+        </div>
+    <% end %>
+
+    <!-- Form for Creating new Group -->
+    <%= form_with(url: "/groups") do %>
+    <div class="form-inline align-items-center">
+        <%= label_tag(:name, "Group", style:"margin-right:10px") %>
+        <%= text_field_tag(:name, nil,class: "form-control") %>
+        <%= submit_tag("Add", class: "btn btn-dark", style:"margin-left:30px") %>
+    </div>
+    <% end %>
+    
+    <div class="row" style="margin-top: 30px">
+
+        <!-- Show Groups which the currnet user is admin in -->
+        <div class= "col-sm">
+            <h2>My Groups</h2>
+            <ul class="list-group">
+                <% @groups.each do |group| %>
+                    <div class="group">
+                    <p class="group-name"> <%= group.name %>  </p>
+                        <%= link_to 'delete', group, method: :delete, class:"btn btn-danger" %>
+                        <%=link_to 'show', group, class:"btn btn-primary showButton"%>
+                   </div>
+                <% end %>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
