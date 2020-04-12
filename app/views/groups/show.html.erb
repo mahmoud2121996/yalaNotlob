@@ -1,0 +1,61 @@
+<div class="center">
+     <h1>Groups</h1>
+
+    <!-- Form for Creating new Group -->
+    <%= form_with(url: "/groups") do %>
+    <div class="form-inline align-items-center">
+        <%= label_tag(:name, "Group", style:"margin-right:10px") %>
+        <%= text_field_tag(:name, nil,class: "form-control") %>
+        <%= submit_tag("Add", class: "btn btn-dark", style:"margin-left:30px") %>
+    </div>
+    <% end %>
+
+    <div class="row" style="margin-top: 30px">
+        <!-- Show Groups which the currnet user is admin in -->
+        <div class= "col-sm">
+            <h2>My Groups</h2>
+            <ul class="list-group">
+                <% @data[1].each do |group| %>
+                <div class="group">
+                    <p> <%= group.name %>  </p>
+                        <%= link_to 'delete', group, method: :delete, class:"btn btn-danger" %>
+                        <%=link_to 'show', group, class:"btn btn-primary showButton"%>
+                   
+                    </div>
+                <% end %>
+            </ul>
+        </div>
+    
+    
+     <!-- Show group and its members-->
+        <div class= "col-sm">
+            <% if @data[0].name %>
+                <h2><%= @data[0].name%></h2>
+                    <% if flash[:user_group_errors]%>
+                        <div class="alert alert-danger">
+                            <% flash[:user_group_errors].each do |msg|%>
+                            <li>
+                                <%= msg %>
+                            </li>
+                            <% end %>
+                        </div>
+                    <% end %>
+                    <%= form_with(url: "/user_groups") do %>
+                        <div class="form-inline align-items-center">
+                            <%= hidden_field_tag(:group_id, @data[0].id) %>
+                            <%= label_tag(:email, "Add member", style:"margin-right:10px") %>
+                            <%= email_field_tag(:email, nil,class: "form-control") %>
+                            <%= submit_tag("Add", class: "btn btn-dark", style:"margin-left:30px") %>
+                        </div>
+                    <% end %>
+                <% if @data[2] && @data[1].length > 0%>
+                    <% @data[2].each do |user|%>
+                    <p><%= user["name"] %> <%= link_to 'delete', user_group_url(:id =>@data[0].id, :user_id => user["id"]), method: :delete, class:"btn btn-danger" %></p>
+                    <% end %>
+                <% else %>
+                    <p>There is no users yet </p>
+                <% end %>
+            <% end %>
+
+        </div>
+</div>
