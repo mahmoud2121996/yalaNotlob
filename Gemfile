@@ -69,3 +69,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # gem 'rmagick'
 gem 'rmagick', '~> 4.1', '>= 4.1.1'
+gem 'font-awesome-rails', '~> 4.7.0'
