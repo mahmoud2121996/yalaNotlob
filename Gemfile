@@ -1,16 +1,20 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.2'
+ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 #device gem
 gem 'devise'
+#omniauth gem
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 #paperclip gem
 gem 'paperclip', '~> 6.1'
 #rmagick gem
-# gem 'rmagick'
+gem 'rmagick'
 #mysql2
 gem 'mysql2', '~> 0.5.2'
 #bootstrap4
@@ -68,5 +72,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 # gem 'rmagick'
-gem 'rmagick', '~> 4.1', '>= 4.1.1'
+# gem 'rmagick', '~> 4.1', '>= 4.1.1'
 gem 'font-awesome-rails', '~> 4.7.0'

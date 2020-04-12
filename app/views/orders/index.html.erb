@@ -21,7 +21,7 @@
       <% if order.status == 1 %>
       <td>waiting</td>
       <td> <%= link_to 'view' ,'#' , method: :get  %> 
-       <%= link_to 'finish' ,'#' , method: :get  %> 
+       <%= link_to 'finish' ,order , method: :put  %> 
        <%= link_to 'cancel' ,'#' , method: :get  %> 
       </td>
       <% elsif order.status == 2 %>
