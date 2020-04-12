@@ -11,4 +11,10 @@ Rails.application.routes.draw do
   post '/friends', to: 'friend#add_friend'
   
   delete '/friends', to: 'friend#remove_friend'
+
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
 end
