@@ -37296,3 +37296,1401 @@ Processing by FriendController#friends_index as HTML
 Completed 200 OK in 110ms (Views: 85.3ms | ActiveRecord: 4.6ms | Allocations: 11043)
 
 
+Started POST "/friends" for ::1 at 2020-04-08 01:32:17 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"ZcT2KtNs214sVLf9G1+9pHrAOJ4QoYUqWhh7wYrgeksqonFPEHdX82KMj5XH6jMoB+FUYlEX/VU0t9aP0VbsDA==", "email"=>{"email"=>"n@n.n"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'n@n.n' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (4.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Create (1.7ms)[0m  [1m[32mINSERT INTO `friends` (`user_id`, `friend_id`, `created_at`, `updated_at`) VALUES (1, 5, '2020-04-07 23:32:17.095639', '2020-04-07 23:32:17.095639')[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (393.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 492ms (ActiveRecord: 404.6ms | Allocations: 5782)
+
+
+Started GET "/friends" for ::1 at 2020-04-08 01:32:17 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 1[0m
+  ↳ app/views/friend/friends_index.html.erb:15
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 22.4ms | Allocations: 1339)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 116ms (Views: 90.4ms | ActiveRecord: 5.6ms | Allocations: 11149)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2020-04-08 01:32:20 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"JA6EfOkbMveq1IhfyPzrDSlu9KovdkhnN9dgiyS0h4NraAMZKgC+WuQMsDcUSWWBVE+YVm7AMBhZeM3FfwIRxA=="}
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 73ms (ActiveRecord: 3.7ms | Allocations: 3784)
+
+
+Started GET "/" for ::1 at 2020-04-08 01:32:21 +0200
+Processing by UserController#index as HTML
+Completed 401 Unauthorized in 38ms (ActiveRecord: 0.0ms | Allocations: 370)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-04-08 01:32:21 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 21.8ms | Allocations: 220)
+  Rendered devise/shared/_links.html.erb (Duration: 6.5ms | Allocations: 655)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 129.4ms | Allocations: 3517)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 201ms (Views: 197.0ms | ActiveRecord: 0.0ms | Allocations: 12972)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-04-08 01:32:34 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"mrxGyQpweB6hBA8vjzFpwROqdvuVaIEUTdmPGDchHHFd3AsrS/kgtL+Z/IU+deZi0U9ht4VtYCWdCKl/94zidg==", "user"=>{"email"=>"h@h.h", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'h@h.h' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 835ms (ActiveRecord: 2.3ms | Allocations: 5342)
+
+
+Started GET "/" for ::1 at 2020-04-08 01:32:35 +0200
+Processing by UserController#index as HTML
+  [1m[36mUser Load (7.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering user/index.html.erb within layouts/application
+  Rendered user/index.html.erb within layouts/application (Duration: 13.1ms | Allocations: 84)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 188ms (Views: 151.3ms | ActiveRecord: 7.9ms | Allocations: 10491)
+
+
+Started GET "/friends" for ::1 at 2020-04-08 01:32:39 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:15
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 13.6ms | Allocations: 1156)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 141ms (Views: 120.6ms | ActiveRecord: 4.0ms | Allocations: 10966)
+
+
+Started POST "/friends" for ::1 at 2020-04-08 01:32:45 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"Ywc16xPgD29u49PtyGl7D/7n0gWMkkrMYq5VlyivX5eORj3+HoJjdR47Hr2+SerpQXN0LtNWixRYz4w4EGsCRg==", "email"=>{"email"=>"n@n.n"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'n@n.n' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Create (1.7ms)[0m  [1m[32mINSERT INTO `friends` (`user_id`, `friend_id`, `created_at`, `updated_at`) VALUES (3, 5, '2020-04-07 23:32:45.437999', '2020-04-07 23:32:45.437999')[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (4144.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 4229ms (ActiveRecord: 4154.0ms | Allocations: 5790)
+
+
+Started GET "/friends" for ::1 at 2020-04-08 01:32:49 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:15
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 14.1ms | Allocations: 1243)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 100ms (Views: 78.6ms | ActiveRecord: 4.0ms | Allocations: 11050)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 14:27:42 +0200
+  [1m[35m (709.6ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (65.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:15
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 379.9ms | Allocations: 6361)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 3695ms (Views: 2966.3ms | ActiveRecord: 92.7ms | Allocations: 40405)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 15:05:37 +0200
+  [1m[35m (12.2ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"wNQgCa+C6v6oUcyqO9KgTeDCWHgq8ZAn6eMmMCbwTIAtlSgcouCG5NiJAfpN8jGrX1b+U3U1Uf/Tgv+fHjQRUQ==", "email"=>{"email"=>"m@m.m"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (56.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'm@m.m' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Create (121.8ms)[0m  [1m[32mINSERT INTO `friends` (`user_id`, `friend_id`, `created_at`, `updated_at`) VALUES (3, 1, '2020-04-12 13:05:38.457580', '2020-04-12 13:05:38.457580')[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (86.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 783ms (ActiveRecord: 300.2ms | Allocations: 22822)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:05:38 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:15
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 47.3ms | Allocations: 1934)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 419ms (Views: 395.2ms | ActiveRecord: 4.3ms | Allocations: 12262)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 15:06:30 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"7W2/fUhL75Zj6CIEUrIomjqMFcPwqDyN7+mz/9lSZ0AALLdoRSmDjBMw71Qkkrl8hRiz6K9s/VXViGpQ4ZY6kQ==", "email"=>{"email"=>"a@a.c"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'a@a.c' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (3.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Create (93.1ms)[0m  [1m[32mINSERT INTO `friends` (`user_id`, `friend_id`, `created_at`, `updated_at`) VALUES (3, 2, '2020-04-12 13:06:31.919081', '2020-04-12 13:06:31.919081')[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (85.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 499ms (ActiveRecord: 278.3ms | Allocations: 20302)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:06:32 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (23.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:15
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 62.0ms | Allocations: 2031)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 161ms (Views: 116.9ms | ActiveRecord: 25.2ms | Allocations: 12350)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:08:28 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 24.8ms | Allocations: 1906)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 152ms (Views: 123.9ms | ActiveRecord: 3.7ms | Allocations: 12937)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:08:40 +0200
+  
+SyntaxError (/home/mohamed/Desktop/Rails Project/yalaNotlob/app/controllers/friend_controller.rb:28: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/friend_controller.rb:28: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/friend_controller.rb:28: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/friend_controller.rb:28: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/friends" for ::1 at 2020-04-12 15:09:05 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 24.6ms | Allocations: 2055)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 194ms (Views: 86.5ms | ActiveRecord: 11.7ms | Allocations: 23080)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 15:09:19 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"CFSpUtLoWLgaL+FgbZJESCdYa4JxeQXVCHb+tO0q+DDlFaFH34o0omr3LDAbstWumMzNqS69xA0yFycb1e6l4Q==", "email"=>{"email"=>"s@s.s"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (41.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 's@s.s' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Create (1.6ms)[0m  [1m[32mINSERT INTO `friends` (`user_id`, `friend_id`, `created_at`, `updated_at`) VALUES (3, 4, '2020-04-12 13:09:19.523218', '2020-04-12 13:09:19.523218')[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (40.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 178ms (ActiveRecord: 89.3ms | Allocations: 9735)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:09:19 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 16.4ms | Allocations: 1550)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 106ms (Views: 86.0ms | ActiveRecord: 3.6ms | Allocations: 11365)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:09:23 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 22.1ms | Allocations: 1548)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 97ms (Views: 73.6ms | ActiveRecord: 4.2ms | Allocations: 11337)
+
+
+Started DELETE "/friends.2" for ::1 at 2020-04-12 15:09:58 +0200
+Processing by FriendController#remove_friend as 
+  Parameters: {"authenticity_token"=>"NzGldsJ73Y1dc6lpTWcPKllh1Rx3ScohkTA9TG031vXacK1jzxmxly2rZDk7R57M5vVzNyiNC/mrUeTjVfOLJA=="}
+  [1m[36mUser Load (10.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mFriend Load (19.9ms)[0m  [1m[34mSELECT `friends`.* FROM `friends` WHERE `friends`.`friend_id` = 2 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:22:in `remove_friend'
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+  [1m[36mFriend Destroy (42.5ms)[0m  [1m[31mDELETE FROM `friends` WHERE `friends`.`id` = 9[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+  [1m[35m (85.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 255ms (ActiveRecord: 159.3ms | Allocations: 4372)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:09:59 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 55.0ms | Allocations: 1897)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 156ms (Views: 128.7ms | ActiveRecord: 4.2ms | Allocations: 12903)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 15:10:03 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"X1WIlcYjrf8Qx0dlaJoonp8WoiQhmsvCqyID9pPGvt6yFICAy0HB5WAfijUeurl4IIIED35eChqRQ9pZqwLjDw==", "email"=>{"email"=>"a@a.c"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'a@a.c' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Create (19.7ms)[0m  [1m[32mINSERT INTO `friends` (`user_id`, `friend_id`, `created_at`, `updated_at`) VALUES (3, 2, '2020-04-12 13:10:03.325093', '2020-04-12 13:10:03.325093')[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (60.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 210ms (ActiveRecord: 87.7ms | Allocations: 5786)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:10:03 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 16.7ms | Allocations: 1556)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 101ms (Views: 77.7ms | ActiveRecord: 3.9ms | Allocations: 11366)
+
+
+Started DELETE "/friends.1" for ::1 at 2020-04-12 15:13:11 +0200
+Processing by FriendController#remove_friend as 
+  Parameters: {"authenticity_token"=>"2AyuUXEtei06D3FIUF8bEcPVg0vLwisfLIv8QfEl6Hg1TaZEfE8WN0rXvBgmf4r3fEElYJQG6scW6iXuyeG1qQ=="}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mFriend Load (13.5ms)[0m  [1m[34mSELECT `friends`.* FROM `friends` WHERE `friends`.`friend_id` = 1 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:22:in `remove_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+  [1m[36mFriend Destroy (3.6ms)[0m  [1m[31mDELETE FROM `friends` WHERE `friends`.`id` = 8[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+  [1m[35m (120.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 216ms (ActiveRecord: 140.4ms | Allocations: 4189)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:13:11 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 23.9ms | Allocations: 1891)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 137ms (Views: 109.8ms | ActiveRecord: 4.0ms | Allocations: 12894)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 15:13:20 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"U0bxmJE/SzOzCOS1Ogd0s235hYdzKVPdYDh2+IeHlJm+B/mNnF0nKcPQKeVMJ+VV0m0jrCztkgVaWa9Xv0PJSA==", "email"=>{"email"=>"m@m.m"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'm@m.m' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Create (35.3ms)[0m  [1m[32mINSERT INTO `friends` (`user_id`, `friend_id`, `created_at`, `updated_at`) VALUES (3, 1, '2020-04-12 13:13:20.278626', '2020-04-12 13:13:20.278626')[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (33.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 155ms (ActiveRecord: 74.9ms | Allocations: 5778)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:13:20 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 15.3ms | Allocations: 1555)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 94ms (Views: 76.1ms | ActiveRecord: 3.9ms | Allocations: 11352)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:13:27 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 18.6ms | Allocations: 1548)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 83ms (Views: 65.0ms | ActiveRecord: 4.5ms | Allocations: 11349)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 15:13:35 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"ZFGH20RR7VknWvvSzr0SbqQ4xso1bt2hwn/foV2YNl+JEI/OSTOBQ1eCNoK4nYOIG6xg4WqqHHn4HgYOZVxrjg==", "email"=>{"email"=>"h@h.h"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (10.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'h@h.h' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Create (32.4ms)[0m  [1m[32mINSERT INTO `friends` (`user_id`, `friend_id`, `created_at`, `updated_at`) VALUES (3, 3, '2020-04-12 13:13:36.053956', '2020-04-12 13:13:36.053956')[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (64.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 208ms (ActiveRecord: 112.2ms | Allocations: 5784)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:13:36 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (25.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 50.2ms | Allocations: 1647)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 130ms (Views: 87.8ms | ActiveRecord: 26.8ms | Allocations: 11450)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:14:52 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 22.7ms | Allocations: 2091)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 96ms (Views: 74.6ms | ActiveRecord: 3.8ms | Allocations: 13092)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:15:56 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 24.7ms | Allocations: 2086)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 190ms (Views: 98.0ms | ActiveRecord: 4.0ms | Allocations: 13079)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:15:59 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 25.9ms | Allocations: 1650)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 123ms (Views: 99.7ms | ActiveRecord: 4.4ms | Allocations: 11441)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:16:14 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 25.7ms | Allocations: 2086)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 135ms (Views: 99.7ms | ActiveRecord: 4.2ms | Allocations: 13082)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:16:33 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 47.1ms | Allocations: 2086)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 201ms (Views: 173.7ms | ActiveRecord: 5.0ms | Allocations: 13086)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:16:41 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 32.3ms | Allocations: 2092)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 137ms (Views: 110.9ms | ActiveRecord: 4.1ms | Allocations: 13091)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:17:51 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 28.3ms | Allocations: 2087)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 131ms (Views: 106.6ms | ActiveRecord: 4.2ms | Allocations: 13081)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:18:24 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 30.7ms | Allocations: 2086)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 148ms (Views: 116.3ms | ActiveRecord: 4.2ms | Allocations: 13076)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:18:57 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 23.9ms | Allocations: 2086)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 100ms (Views: 76.4ms | ActiveRecord: 3.7ms | Allocations: 13086)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:19:03 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 39.0ms | Allocations: 1650)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 128ms (Views: 89.2ms | ActiveRecord: 4.4ms | Allocations: 11446)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:19:40 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 32.1ms | Allocations: 2091)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 141ms (Views: 113.7ms | ActiveRecord: 4.1ms | Allocations: 13094)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:20:30 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 23.3ms | Allocations: 2086)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 122ms (Views: 92.3ms | ActiveRecord: 4.0ms | Allocations: 13085)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:20:39 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 33.7ms | Allocations: 2086)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 178ms (Views: 148.2ms | ActiveRecord: 4.3ms | Allocations: 13079)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:20:48 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 48.6ms | Allocations: 2086)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 177ms (Views: 149.2ms | ActiveRecord: 5.3ms | Allocations: 13079)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:20:52 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 18.7ms | Allocations: 1650)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 106ms (Views: 76.9ms | ActiveRecord: 4.4ms | Allocations: 11446)
+
+
+Started DELETE "/friends.3" for ::1 at 2020-04-12 15:22:03 +0200
+Processing by FriendController#remove_friend as 
+  Parameters: {"authenticity_token"=>"YCodREl/kxX6cxatIhy2aQ2qjSUV6WxHTwYLI/HBbp+NaxVRRB3/D4qr2/1UPCePsj4rDkotrZ91Z9KMyQUzTg=="}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mFriend Load (1.8ms)[0m  [1m[34mSELECT `friends`.* FROM `friends` WHERE `friends`.`friend_id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:22:in `remove_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+  [1m[36mFriend Destroy (1.7ms)[0m  [1m[31mDELETE FROM `friends` WHERE `friends`.`id` = 1[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+  [1m[35m (81.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 153ms (ActiveRecord: 87.3ms | Allocations: 4191)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:22:03 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 19.0ms | Allocations: 1645)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 124ms (Views: 92.2ms | ActiveRecord: 4.3ms | Allocations: 11445)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:22:09 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 24.1ms | Allocations: 1645)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 116ms (Views: 91.9ms | ActiveRecord: 4.4ms | Allocations: 11441)
+
+
+Started DELETE "/friends.3" for ::1 at 2020-04-12 15:22:17 +0200
+Processing by FriendController#remove_friend as 
+  Parameters: {"authenticity_token"=>"Tc3jHvT39Z8VikvMSsvpbBAg9/nUdJHfg9zE39/eB/OgjOsL+ZWZhWVShpw863iKr7RR0ouwUAe5vR1w5xpaIg=="}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mFriend Load (2.1ms)[0m  [1m[34mSELECT `friends`.* FROM `friends` WHERE `friends`.`friend_id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:22:in `remove_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+  [1m[36mFriend Destroy (6.0ms)[0m  [1m[31mDELETE FROM `friends` WHERE `friends`.`id` = 13[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+  [1m[35m (123.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 200ms (ActiveRecord: 133.8ms | Allocations: 4186)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:22:17 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 24.6ms | Allocations: 1548)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 101ms (Views: 74.4ms | ActiveRecord: 6.1ms | Allocations: 11343)
+
+
+Started DELETE "/friends.4" for ::1 at 2020-04-12 15:24:37 +0200
+Processing by FriendController#remove_friend as 
+  Parameters: {"authenticity_token"=>"EC7f8KvAsrYxSxQ8Khr3xkxfETrgHSNXzPly9+BubOz9b9flpqLerEGT2WxcOmYg88u3Eb/Z4o/2mKtY2KoxPQ=="}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mFriend Load (2.0ms)[0m  [1m[34mSELECT `friends`.* FROM `friends` WHERE `friends`.`friend_id` = 4 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:22:in `remove_friend'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+  [1m[36mFriend Destroy (59.6ms)[0m  [1m[31mDELETE FROM `friends` WHERE `friends`.`id` = 10[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+  [1m[35m (116.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 237ms (ActiveRecord: 180.4ms | Allocations: 4194)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:24:37 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 17.4ms | Allocations: 1450)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 88ms (Views: 69.5ms | ActiveRecord: 4.0ms | Allocations: 11244)
+
+
+Started DELETE "/friends.2" for ::1 at 2020-04-12 15:24:41 +0200
+Processing by FriendController#remove_friend as 
+  Parameters: {"authenticity_token"=>"TrwmHnuoCSA2mrIkfbp/QqyUQJ5XjH5MBdc+C8HHVsyj/S4LdsplOkZCf3QLmu6kEwDmtQhIv5Q/tuek+QMLHQ=="}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mFriend Load (2.2ms)[0m  [1m[34mSELECT `friends`.* FROM `friends` WHERE `friends`.`friend_id` = 2 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:22:in `remove_friend'
+  [1m[35m (2.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+  [1m[36mFriend Destroy (4.2ms)[0m  [1m[31mDELETE FROM `friends` WHERE `friends`.`id` = 11[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+  [1m[35m (74.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:23:in `remove_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 157ms (ActiveRecord: 85.6ms | Allocations: 4193)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 15:24:41 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 17.3ms | Allocations: 1353)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 110ms (Views: 85.1ms | ActiveRecord: 4.0ms | Allocations: 11155)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:07:46 +0200
+  [1m[35m (149.9ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (125.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (54.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 148.0ms | Allocations: 1800)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1036ms (Views: 649.0ms | ActiveRecord: 179.4ms | Allocations: 12810)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:07:52 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 26.5ms | Allocations: 1358)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 125ms (Views: 88.9ms | ActiveRecord: 5.9ms | Allocations: 11150)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:08:10 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 19.7ms | Allocations: 1794)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 98ms (Views: 74.3ms | ActiveRecord: 3.7ms | Allocations: 12795)
+
+
+Started DELETE "/friends.1" for ::1 at 2020-04-12 16:18:43 +0200
+  [1m[35m (0.7ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by FriendController#remove_friend as 
+  Parameters: {"authenticity_token"=>"ho19jUwsk0gEeLInoch83/Fvv/dhPiac8Lk2FBRi8YBrzHWYQU7/UnSgf3fX6O05TvsZ3D7650TK2O+7LKasUQ=="}
+  [1m[36mUser Load (14.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mFriend Load (2.0ms)[0m  [1m[34mSELECT `friends`.* FROM `friends` WHERE `friends`.`friend_id` = 1 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:24:in `remove_friend'
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[36mFriend Destroy (93.0ms)[0m  [1m[31mDELETE FROM `friends` WHERE `friends`.`id` = 12[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[35m (100.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+Completed 500 Internal Server Error in 2565ms (ActiveRecord: 210.2ms | Allocations: 151374)
+
+
+  
+NameError (undefined local variable or method `result' for #<FriendController:0x0000000006333fa0>
+Did you mean?  resutl):
+  
+app/controllers/friend_controller.rb:27:in `remove_friend'
+Started DELETE "/friends.1" for ::1 at 2020-04-12 16:19:17 +0200
+Processing by FriendController#remove_friend as 
+  Parameters: {"authenticity_token"=>"ho19jUwsk0gEeLInoch83/Fvv/dhPiac8Lk2FBRi8YBrzHWYQU7/UnSgf3fX6O05TvsZ3D7650TK2O+7LKasUQ=="}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mFriend Load (1.6ms)[0m  [1m[34mSELECT `friends`.* FROM `friends` WHERE `friends`.`friend_id` = 1 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:24:in `remove_friend'
+Completed 500 Internal Server Error in 231ms (ActiveRecord: 87.9ms | Allocations: 13718)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/friend_controller.rb:25:in `remove_friend'
+Started GET "/friends" for ::1 at 2020-04-12 16:19:25 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 25.0ms | Allocations: 1850)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 131ms (Views: 89.6ms | ActiveRecord: 5.4ms | Allocations: 12162)
+
+
+Started DELETE "/friends.5" for ::1 at 2020-04-12 16:19:27 +0200
+Processing by FriendController#remove_friend as 
+  Parameters: {"authenticity_token"=>"aFJQ/WuYTme/sIE8XH5QU8c9AEiyC1lSSh2WqdRb9fSFE1joZvoifc9oTGwqXsG1eKmmY+3PmIpwfE8G7J+oJQ=="}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mFriend Load (2.2ms)[0m  [1m[34mSELECT `friends`.* FROM `friends` WHERE `friends`.`friend_id` = 5 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:24:in `remove_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[36mFriend Destroy (22.8ms)[0m  [1m[31mDELETE FROM `friends` WHERE `friends`.`id` = 6[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[35m (72.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 206ms (ActiveRecord: 102.0ms | Allocations: 7301)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:19:27 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 17.8ms | Allocations: 1256)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 125ms (Views: 102.1ms | ActiveRecord: 5.3ms | Allocations: 11049)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:19:37 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (7.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 13.0ms | Allocations: 1256)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 95ms (Views: 66.5ms | ActiveRecord: 9.4ms | Allocations: 11043)
+
+
+Started DELETE "/friends.5" for ::1 at 2020-04-12 16:19:40 +0200
+Processing by FriendController#remove_friend as 
+  Parameters: {"authenticity_token"=>"4Ezf6WYbvRWBc3NrDtV5GyQgN65zrthZMYnGFJizeScNDdf8a3nRD/Grvjt49ej9m7SRhSxqGYEL6B+7oHck9g=="}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mFriend Load (2.0ms)[0m  [1m[34mSELECT `friends`.* FROM `friends` WHERE `friends`.`friend_id` = 5 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:24:in `remove_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[36mFriend Destroy (1.7ms)[0m  [1m[31mDELETE FROM `friends` WHERE `friends`.`id` = 7[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[35m (132.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 202ms (ActiveRecord: 138.5ms | Allocations: 4253)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:19:40 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 1159)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 83ms (Views: 65.0ms | ActiveRecord: 3.8ms | Allocations: 10954)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 16:20:12 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"llWGBvjPKzzNDct+JVwby10bD9Fgm2eFmk+XgRefP197FI4T9a1HJr3VBi5TfIot4o+p+j9fpl2gLk4uL1tijg==", "email"=>{"email"=>"n@n.n"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'n@n.n' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Create (22.5ms)[0m  [1m[32mINSERT INTO `friends` (`user_id`, `friend_id`, `created_at`, `updated_at`) VALUES (3, 5, '2020-04-12 14:20:12.682076', '2020-04-12 14:20:12.682076')[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (76.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 190ms (ActiveRecord: 107.1ms | Allocations: 6688)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:20:12 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 18.9ms | Allocations: 1258)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 108ms (Views: 89.8ms | ActiveRecord: 3.7ms | Allocations: 11061)
+
+
+Started DELETE "/friends.5" for ::1 at 2020-04-12 16:20:17 +0200
+Processing by FriendController#remove_friend as 
+  Parameters: {"authenticity_token"=>"E9BdcbzfFtd2rkhuUy7oi3BmtKitqiQ11ZXfMxqRNIn+kVVksb16zQZ2hT4lDnltz/ISg/Ju5e3v9AacIlVpWA=="}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mFriend Load (2.1ms)[0m  [1m[34mSELECT `friends`.* FROM `friends` WHERE `friends`.`friend_id` = 5 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:24:in `remove_friend'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[36mFriend Destroy (1.8ms)[0m  [1m[31mDELETE FROM `friends` WHERE `friends`.`id` = 14[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[35m (126.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 180ms (ActiveRecord: 133.3ms | Allocations: 4243)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:20:17 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 13.3ms | Allocations: 1160)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 120ms (Views: 83.0ms | ActiveRecord: 6.7ms | Allocations: 10949)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 16:20:39 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"V+hjlBO8+vcoVSIBlde7kRe7fbMc4j12eZ+02dBpFrq6qWuBHt6W7ViN71Hj9yp3qC/bmEMm/K5D/m126K1Law==", "email"=>{"email"=>"n@n.n"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'n@n.n' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Create (1.6ms)[0m  [1m[32mINSERT INTO `friends` (`user_id`, `friend_id`, `created_at`, `updated_at`) VALUES (3, 5, '2020-04-12 14:20:40.248945', '2020-04-12 14:20:40.248945')[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (65.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 305ms (ActiveRecord: 86.4ms | Allocations: 20288)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:20:40 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 22.3ms | Allocations: 1850)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 107ms (Views: 81.2ms | ActiveRecord: 3.8ms | Allocations: 12168)
+
+
+Started DELETE "/friends.5" for ::1 at 2020-04-12 16:20:46 +0200
+Processing by FriendController#remove_friend as 
+  Parameters: {"authenticity_token"=>"qAi+H9Wx3TmHHOpvBr0zTsELopx261rtnJsizxZXaJVFSbYK2NOxI/fEJz9wnaKofp8EtykvmzWm+vtgLpM1RA=="}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mFriend Load (1.9ms)[0m  [1m[34mSELECT `friends`.* FROM `friends` WHERE `friends`.`friend_id` = 5 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:24:in `remove_friend'
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[36mFriend Destroy (68.6ms)[0m  [1m[31mDELETE FROM `friends` WHERE `friends`.`id` = 15[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[35m (40.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 216ms (ActiveRecord: 115.3ms | Allocations: 4388)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:20:46 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 16.4ms | Allocations: 1159)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 96ms (Views: 77.5ms | ActiveRecord: 3.8ms | Allocations: 10952)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 16:21:12 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"pJwfIeIQWin9f+xCR4JVWoeDLJsaZ5HvRrIurfdphUxJ3Rc073I2M42nIRIxosS8OBeKsEWjUDd80/cCz63YnQ==", "email"=>{"email"=>""}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (7.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = '' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+Completed 500 Internal Server Error in 89ms (ActiveRecord: 12.6ms | Allocations: 3075)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/friend_controller.rb:14:in `add_friend'
+Started GET "/friends" for ::1 at 2020-04-12 16:21:43 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 11.0ms | Allocations: 1321)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 1.7ms | Allocations: 4237)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>Friends</h1>
+
+<div class="container d-flex flex-column align-items-center">
+    <% flash.each do |type, msg| %>
+        <div class="alert alert-info alert-dismissible fade show">
+        <%= msg %>
+        </div>
+    <% end %>
+   
+    <%= form_with scope: :email, :class=> "form-inline", local: true do |form| %>
+          <%= form.label :Your_friend_email, :class=> "mr-3", :for => "inlineFormInputName2" %>
+          <%= form.email_field :email, :class => 'form-control mb-2 mr-sm-2', :id=> "inlineFormInputName2", :required %>
+          
+          <%= form.submit :class=> "btn btn-primary mb-2", :value =>"Add Friend" %>
+    <% end %>
+
+    <div class="container d-flex flex-row flex-wrap align-items-center justify-content-center">
+        <% if @friends != nil %>
+
+        <% @friends.each do |friend| %>
+            <div class="d-flex justify-content-around">
+                    <div class="card mb-3 mr-3" style="min-width: 200px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"> <%= friend.name %></h5>
+                                </div>
+                            </div>
+                            <div class="col-md-4 d-flex justify-content-between ">
+                                <%= link_to "Remove #{friend.name}?", friends_path(friend),
+                                method: :delete,
+                                class: "btn btn-danger btn-sm",
+                                data: { confirm: 'Are you sure?' } %>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            <% end %>
+
+        <% else %>
+            <h1>Your friend list is empty, Add freinds by thier email!</h1>
+        <% end %>
+    </div>
+</div>
+</div>
+):
+1:    <h1>Friends</h1>
+2:    
+3:    <div class="container d-flex flex-column align-items-center">
+4:        <% flash.each do |type, msg| %>
+5:            <div class="alert alert-info alert-dismissible fade show">
+6:            <%= msg %>
+7:            </div>
+8:        <% end %>
+9:       
+10:        <%= form_with scope: :email, :class=> "form-inline", local: true do |form| %>
+11:              <%= form.label :Your_friend_email, :class=> "mr-3", :for => "inlineFormInputName2" %>
+12:              <%= form.email_field :email, :class => 'form-control mb-2 mr-sm-2', :id=> "inlineFormInputName2", :required %>
+13:              
+14:              <%= form.submit :class=> "btn btn-primary mb-2", :value =>"Add Friend" %>
+15:        <% end %>
+16:    
+17:        <div class="container d-flex flex-row flex-wrap align-items-center justify-content-center">
+18:            <% if @friends != nil %>
+19:    
+20:            <% @friends.each do |friend| %>
+21:                <div class="d-flex justify-content-around">
+22:                        <div class="card mb-3 mr-3" style="min-width: 200px;">
+23:                            <div class="row no-gutters">
+24:                                <div class="col-md-8">
+25:                                    <div class="card-body">
+26:                                        <h5 class="card-title"> <%= friend.name %></h5>
+27:                                    </div>
+28:                                </div>
+29:                                <div class="col-md-4 d-flex justify-content-between ">
+30:                                    <%= link_to "Remove #{friend.name}?", friends_path(friend),
+31:                                    method: :delete,
+32:                                    class: "btn btn-danger btn-sm",
+33:                                    data: { confirm: 'Are you sure?' } %>
+34:                                </div>
+35:                            </div>
+36:                        </div>
+37:    
+38:                    </div>
+39:                <% end %>
+40:    
+41:            <% else %>
+42:                <h1>Your friend list is empty, Add freinds by thier email!</h1>
+43:            <% end %>
+44:        </div>
+45:    </div>
+46:    </div>
+  
+app/views/friend/friends_index.html.erb:12: syntax error, unexpected ')', expecting =>
+app/views/friend/friends_index.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+app/views/friend/friends_index.html.erb:48: syntax error, unexpected keyword_end, expecting ')'
+app/views/friend/friends_index.html.erb:12: syntax error, unexpected ')', expecting =>
+app/views/friend/friends_index.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+app/views/friend/friends_index.html.erb:48: syntax error, unexpected keyword_end, expecting ')'
+app/views/friend/friends_index.html.erb:12: syntax error, unexpected ')', expecting =>
+app/views/friend/friends_index.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+app/views/friend/friends_index.html.erb:48: syntax error, unexpected keyword_end, expecting ')'
+app/views/friend/friends_index.html.erb:12: syntax error, unexpected ')', expecting =>
+app/views/friend/friends_index.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+app/views/friend/friends_index.html.erb:48: syntax error, unexpected keyword_end, expecting ')'
+app/views/friend/friends_index.html.erb:12: syntax error, unexpected ')', expecting =>
+app/views/friend/friends_index.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+app/views/friend/friends_index.html.erb:48: syntax error, unexpected keyword_end, expecting ')'
+app/views/friend/friends_index.html.erb:12: syntax error, unexpected ')', expecting =>
+app/views/friend/friends_index.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+app/views/friend/friends_index.html.erb:48: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/friends" for ::1 at 2020-04-12 16:22:09 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 20.0ms | Allocations: 1603)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 95ms (Views: 75.8ms | ActiveRecord: 4.0ms | Allocations: 12601)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 16:23:12 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"jCWfK0U4g4zEK26CWegE4ipbWDgQ/GsNewwcKS9aAwphZJc+SFrvlrTzo9IvyJUElc/+E084qtVBbcWGF55e2w==", "email"=>{"email"=>"n@n.n"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'n@n.n' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Create (1.7ms)[0m  [1m[32mINSERT INTO `friends` (`user_id`, `friend_id`, `created_at`, `updated_at`) VALUES (3, 5, '2020-04-12 14:23:13.100563', '2020-04-12 14:23:13.100563')[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (70.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 334ms (ActiveRecord: 90.2ms | Allocations: 20270)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:23:13 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 18.6ms | Allocations: 1853)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 93ms (Views: 72.5ms | ActiveRecord: 3.6ms | Allocations: 12173)
+
+
+Started DELETE "/friends.5" for ::1 at 2020-04-12 16:23:16 +0200
+Processing by FriendController#remove_friend as 
+  Parameters: {"authenticity_token"=>"SQMRlOS6+hBUoNYvs8ARMTA1dEkfjpIV3whsLF7Gh0OkQhmB6diWCiR4G3/F4IDXj6HSYkBKU83labWDZgLakg=="}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mFriend Load (1.9ms)[0m  [1m[34mSELECT `friends`.* FROM `friends` WHERE `friends`.`friend_id` = 5 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:24:in `remove_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[36mFriend Destroy (1.8ms)[0m  [1m[31mDELETE FROM `friends` WHERE `friends`.`id` = 16[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[35m (100.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 186ms (ActiveRecord: 107.5ms | Allocations: 4355)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:23:16 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:20
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 13.9ms | Allocations: 1164)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 100ms (Views: 78.2ms | ActiveRecord: 4.0ms | Allocations: 10961)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:23:56 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:21
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 23.0ms | Allocations: 1611)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 155ms (Views: 133.3ms | ActiveRecord: 3.7ms | Allocations: 12613)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 16:24:00 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"iWRfSYc1UxYYq0dsJ7AF4puja+D1fXojgq2XuGI+jxBkJVdcilc/DGhzijxRkJQEJDfNy6q5u/u4zE4XWvrSwQ==", "email"=>{"email"=>"n@n.n"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'n@n.n' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Create (3.7ms)[0m  [1m[32mINSERT INTO `friends` (`user_id`, `friend_id`, `created_at`, `updated_at`) VALUES (3, 5, '2020-04-12 14:24:01.013902', '2020-04-12 14:24:01.013902')[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (41.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 167ms (ActiveRecord: 51.9ms | Allocations: 5789)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:24:01 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:21
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 26.1ms | Allocations: 1266)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 178ms (Views: 141.5ms | ActiveRecord: 3.8ms | Allocations: 11069)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:24:10 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:21
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 32.7ms | Allocations: 1702)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 195ms (Views: 163.0ms | ActiveRecord: 3.8ms | Allocations: 12702)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:24:10 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (16.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (9.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:21
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 41.9ms | Allocations: 2443)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 242ms (Views: 189.0ms | ActiveRecord: 26.5ms | Allocations: 18909)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 16:27:01 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"KznUZ3AgDoH7MTYNYShYC0vESgCQAjqEIKYYbDLjP67GeNxyfUJim4vp+10XCMnt9FDsK8/G+1wax8HDCidifw==", "email"=>{"email"=>"n@n.n"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'n@n.n' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM `friends` WHERE `friends`.`user_id` = 3 AND `friends`.`user_id` = 3 AND `friends`.`friend_id` = 5 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (2.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 271ms (ActiveRecord: 22.2ms | Allocations: 21710)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:27:02 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:21
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 17.9ms | Allocations: 1855)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 110ms (Views: 86.8ms | ActiveRecord: 3.7ms | Allocations: 12175)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 16:27:29 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"9RvIn3eJu+tBiKSc0qQ+/TMTUfNypsWGUeKw+8TjSuQYWsCKeuvX8TFQacykhK8bjIf32C1iBF5rg2lU/CcXNQ==", "email"=>{"email"=>"h@h.h"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'h@h.h' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM `friends` WHERE `friends`.`user_id` = 3 AND `friends`.`user_id` = 3 AND `friends`.`friend_id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Create (2.0ms)[0m  [1m[32mINSERT INTO `friends` (`user_id`, `friend_id`, `created_at`, `updated_at`) VALUES (3, 3, '2020-04-12 14:27:29.640325', '2020-04-12 14:27:29.640325')[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (31.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 129ms (ActiveRecord: 41.7ms | Allocations: 6800)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:27:29 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:21
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 12.7ms | Allocations: 1358)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 87ms (Views: 70.4ms | ActiveRecord: 3.4ms | Allocations: 11168)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 16:27:34 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"jGp4KFNN0FEss+ifDxAIi8IL6sAeBRY3I0Oqp0nLbCJhK3A9Xi+8S1xrJc95MJltfZ9M60HB1+8ZInMIcQ8x8w==", "email"=>{"email"=>"h@h.h"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'h@h.h' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Exists? (3.2ms)[0m  [1m[34mSELECT 1 AS one FROM `friends` WHERE `friends`.`user_id` = 3 AND `friends`.`user_id` = 3 AND `friends`.`friend_id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (7.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 140ms (ActiveRecord: 16.3ms | Allocations: 6674)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:27:34 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:21
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 12.6ms | Allocations: 1359)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 86ms (Views: 67.0ms | ActiveRecord: 3.5ms | Allocations: 11168)
+
+
+Started DELETE "/friends.3" for ::1 at 2020-04-12 16:27:37 +0200
+Processing by FriendController#remove_friend as 
+  Parameters: {"authenticity_token"=>"bczJidSVW5hiEjxnVWt4qxhWah694IzOPx0PdLvF5BSAjcGc2fc3ghLK8TcjS+lNp8LMNeIkTRYFfNbbgwG5xQ=="}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mFriend Load (2.4ms)[0m  [1m[34mSELECT `friends`.* FROM `friends` WHERE `friends`.`friend_id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:24:in `remove_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[36mFriend Destroy (2.7ms)[0m  [1m[31mDELETE FROM `friends` WHERE `friends`.`id` = 18[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[35m (93.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 183ms (ActiveRecord: 100.7ms | Allocations: 4351)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:27:37 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:21
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 34.5ms | Allocations: 1264)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 133ms (Views: 110.5ms | ActiveRecord: 4.0ms | Allocations: 11070)
+
+
+Started DELETE "/friends.5" for ::1 at 2020-04-12 16:27:40 +0200
+Processing by FriendController#remove_friend as 
+  Parameters: {"authenticity_token"=>"dwbv1tw5tREICb2QiobZp/ZXyh2Zs3VmeFhgyXT1FymaR+fD0VvZC3jRcMD8pkhBScNsNsZ3tL5COblmTDFK+A=="}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mFriend Load (2.4ms)[0m  [1m[34mSELECT `friends`.* FROM `friends` WHERE `friends`.`friend_id` = 5 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:24:in `remove_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[36mFriend Destroy (1.8ms)[0m  [1m[31mDELETE FROM `friends` WHERE `friends`.`id` = 17[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+  [1m[35m (105.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:25:in `remove_friend'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 180ms (ActiveRecord: 113.0ms | Allocations: 4206)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 16:27:40 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:21
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 13.6ms | Allocations: 1164)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 89ms (Views: 71.3ms | ActiveRecord: 3.9ms | Allocations: 10972)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 17:01:15 +0200
+  [1m[35m (1.0ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"aZB73irxlIytP6FyxMZlvdZOJ/tKknnCet8DrHVCA0CE0XPLJ5P4lt3nbCKy5vRbadqB0BVWuBpAvtoDTYZekQ==", "email"=>{"email"=>"n@n.n"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'n@n.n' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM `friends` WHERE `friends`.`user_id` = 3 AND `friends`.`user_id` = 3 AND `friends`.`friend_id` = 5 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Create (2.8ms)[0m  [1m[32mINSERT INTO `friends` (`user_id`, `friend_id`, `created_at`, `updated_at`) VALUES (3, 5, '2020-04-12 15:01:16.342824', '2020-04-12 15:01:16.342824')[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (52.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+No template found for FriendController#add_friend, rendering head :no_content
+Completed 204 No Content in 346ms (ActiveRecord: 64.0ms | Allocations: 22838)
+
+
+Started GET "/friends" for ::1 at 2020-04-12 17:01:22 +0200
+Processing by FriendController#friends_index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering friend/friends_index.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN friends ON users.id = friends.friend_id WHERE `friends`.`user_id` = 3[0m
+  ↳ app/views/friend/friends_index.html.erb:21
+  Rendered friend/friends_index.html.erb within layouts/application (Duration: 23.9ms | Allocations: 1852)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 113ms (Views: 85.5ms | ActiveRecord: 4.0ms | Allocations: 12160)
+
+
+Started POST "/friends" for ::1 at 2020-04-12 17:01:28 +0200
+Processing by FriendController#add_friend as HTML
+  Parameters: {"authenticity_token"=>"ADSPHCNDOXPoFWlcDRDudjb/dggDqRwfDSH+osGl73PtdYcJLiFVaZjNpAx7MH+QiWvQI1xt3cc3QCcN+WGyog==", "email"=>{"email"=>"n@n.n"}, "commit"=>"Add Friend"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'n@n.n' LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:11:in `add_friend'
+  [1m[35m (4.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mFriend Exists? (3.6ms)[0m  [1m[34mSELECT 1 AS one FROM `friends` WHERE `friends`.`user_id` = 3 AND `friends`.`user_id` = 3 AND `friends`.`friend_id` = 5 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/friend_controller.rb:15:in `add_friend'
+No template found for FriendController#add_friend, rendering head :no_content
+Completed 204 No Content in 157ms (ActiveRecord: 18.7ms | Allocations: 6734)
+
+

@@ -1,19 +1,25 @@
 <h1>Friends</h1>
 
 <div class="container d-flex flex-column align-items-center">
+
+    <% flash.each do |type, msg| %>
+        <div class="alert alert-info alert-dismissible fade show">
+        <%= msg %>
+        </div>
+    <% end %>
    
     <%= form_with scope: :email, :class=> "form-inline", local: true do |form| %>
           <%= form.label :Your_friend_email, :class=> "mr-3", :for => "inlineFormInputName2" %>
-          <%= form.email_field :email, :class => 'form-control mb-2 mr-sm-2', :id=> "inlineFormInputName2" %>
+          <%= form.email_field :email, :class => 'form-control mb-2 mr-sm-2', :id=> "inlineFormInputName2", :required => "required" %>
           
           <%= form.submit :class=> "btn btn-primary mb-2", :value =>"Add Friend" %>
     <% end %>
 
-    <div class="container d-flex flex-row align-items-center">
+    <div class="container d-flex flex-row flex-wrap align-items-center justify-content-center">
         <% if @friends != nil %>
 
         <% @friends.each do |friend| %>
-            <div class="container d-flex justify-content-around">
+            <div class="d-flex justify-content-around">
                     <div class="card mb-3 mr-3" style="min-width: 200px;">
                         <div class="row no-gutters">
                             <div class="col-md-8">
