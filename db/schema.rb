@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_08_101617) do
+ActiveRecord::Schema.define(version: 2020_04_13_134757) do
 
   create_table "friends", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 2020_04_08_101617) do
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "creator_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["creator_id"], name: "index_groups_on_creator_id"
+    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "invited_users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -43,8 +43,9 @@ ActiveRecord::Schema.define(version: 2020_04_08_101617) do
     t.bigint "from_id", null: false
     t.bigint "to_id", null: false
     t.bigint "order_id"
-    t.integer "type", null: false
-    t.boolean "read", null: false
+    t.integer "notification_type", null: false
+    t.datetime "read", null: false
+    t.boolean "reacted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["from_id"], name: "index_notifications_on_from_id"
@@ -78,6 +79,15 @@ ActiveRecord::Schema.define(version: 2020_04_08_101617) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "user_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_user_groups_on_group_id"
+    t.index ["user_id"], name: "index_user_groups_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.string "email", default: "", null: false
@@ -95,18 +105,9 @@ ActiveRecord::Schema.define(version: 2020_04_08_101617) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "users_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "group_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["group_id"], name: "index_users_groups_on_group_id"
-    t.index ["user_id"], name: "index_users_groups_on_user_id"
-  end
-
   add_foreign_key "friends", "users", column: "friend_id", on_delete: :cascade
   add_foreign_key "friends", "users", on_delete: :cascade
-  add_foreign_key "groups", "users", column: "creator_id", on_delete: :cascade
+  add_foreign_key "groups", "users", on_delete: :cascade
   add_foreign_key "invited_users", "orders", on_delete: :cascade
   add_foreign_key "invited_users", "users", on_delete: :cascade
   add_foreign_key "notifications", "orders", on_delete: :cascade
@@ -115,6 +116,6 @@ ActiveRecord::Schema.define(version: 2020_04_08_101617) do
   add_foreign_key "order_details", "orders", on_delete: :cascade
   add_foreign_key "order_details", "users", on_delete: :cascade
   add_foreign_key "orders", "users", on_delete: :cascade
-  add_foreign_key "users_groups", "groups", on_delete: :cascade
-  add_foreign_key "users_groups", "users", on_delete: :cascade
+  add_foreign_key "user_groups", "groups", on_delete: :cascade
+  add_foreign_key "user_groups", "users", on_delete: :cascade
 end
