@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
             flash[:group_error] = "There is no Group exists with this id"
             redirect_to :groups
         end
-        @members = GroupMember.where(group_id: params[:id])
+        @members = UserGroup.where(group_id: params[:id])
         @users = @members.map{
             |member| User.find(member.user_id)
         }
