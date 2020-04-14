@@ -76,3 +76,7 @@ tmp/cache/webpacker/last-compilation-digest-development
 log/development.log
 /log/development.loglog
 log/*
+log/development.log
+tmp/cache/webpacker/last-compilation-digest-development
+tmp/cache/bootsnap-load-path-cache
+node_modules/.yarn-integrity
