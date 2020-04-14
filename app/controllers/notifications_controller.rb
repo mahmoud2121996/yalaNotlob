@@ -1,11 +1,11 @@
 class NotificationsController < ApplicationController
     before_action :authenticate_user!
     def index
-        @notifications = Notification.where(to_id: current_user).limit(4)
+        @notifications = Notification.where(to_id: current_user).limit(4).order('created_at DESC')
     end
     
     def showAllNotifications
-        @notifications = Notification.where(to_id: current_user)
+        @notifications = Notification.where(to_id: current_user).order('created_at DESC')
     end
     
 

@@ -9,13 +9,17 @@ class FriendController < ApplicationController
 
   def add_friend
     @user = User.find_by(email: params[:email][:email])
-    @friend = Friend.new(user_id: current_user.id, friend_id: @user.id )
-    if( @friend.user_id == @friend.friend_id)
-      redirect_to friends_path, notice: "You can't add your self"  
-    elsif @friend.save
-      redirect_to friends_path, notice: "Added successfully."
-    elsif @friend.errors.details[:friend_id][0][:error] == :taken 
-      redirect_to friends_path, notice: "Alredy your friend."
+    if(@user)
+      @friend = Friend.new(user_id: current_user.id, friend_id: @user.id )
+      if( @friend.user_id == @friend.friend_id)
+        redirect_to friends_path, notice: "You can't add your self"  
+      elsif @friend.save
+        redirect_to friends_path, notice: "Added successfully."
+      elsif @friend.errors.details[:friend_id][0][:error] == :taken 
+        redirect_to friends_path, notice: "Alredy your friend."
+      end
+    else
+      redirect_to friends_path, notice: "Couldn't find a user with the email you entered."
     end
   end
 

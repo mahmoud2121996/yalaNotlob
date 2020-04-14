@@ -1,9 +1,34 @@
 class OrdersController < ApplicationController
+  def index
+    @user_id = current_user.id
+    @orders = current_user.orders
+  end
+
+  def create
+    @order= User.find(current_user.id).orders.create(order_params)
+   
+    # @post= Post.new 
+    # @post.title=params[:title]
+    # @post.content=params[:content]
+    # @post.save
+    if @order.id 
+     redirect_to orders_path
+    else 
+      render :new
+    end
+
+  end
 
   def new
     @order = Order.new;
   end
 
+<<<<<<< HEAD
+=======
+  def show
+    redirect_to :controller => 'order_details', :action => 'index' ,:order => params[:id]
+  end
+>>>>>>> 77897ea0c3d63505c7d3031e777e394691c6e63a
 
   def create
     # users = params['id'];
