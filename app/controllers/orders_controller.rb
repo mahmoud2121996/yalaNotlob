@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
     else 
       render :new
     end
+
   end
 
   def new
@@ -26,6 +27,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    redirect_to :controller => 'order_details', :action => 'index' ,:order => params[:id]
   end
 
   def update
