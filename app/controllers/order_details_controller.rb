@@ -33,9 +33,18 @@ class OrderDetailsController < ApplicationController
   end
 
   def destroy
-    @detail = OrderDetail.find(params[:id])
-    id = @detail.order_id
-    @detail.delete
+    @user = InvitedUser.find(params[:id])
+    id = @user.order_id
+    @order = Order.find(id)
+    if @user.status == 0
+      @order.invited = @order.invited - 1
+      @order.save
+    elsif @user.status == 1
+      @order.joined = @order.joined - 1
+      @order.invited = @order.invited - 1
+      @order.save
+    end
+    @user.delete
     redirect_to :controller => 'order_details', :action => 'index' ,:order => id
   end
 end
