@@ -75,3 +75,4 @@ tmp/cache/bootsnap-compile-cache/f5/e3202dd16f9b72
 tmp/cache/webpacker/last-compilation-digest-development
 log/development.log
 /log/development.loglog
+log/*
