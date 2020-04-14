@@ -3,5 +3,5 @@ class Notification < ApplicationRecord
     belongs_to :to, class_name: "User", foreign_key: "to_id"
 
 
-    scope :unread, ->{ where(read: nil) }
+    scope :unread, ->{ where(read: 0) }
 end
