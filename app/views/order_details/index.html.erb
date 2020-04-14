@@ -20,7 +20,6 @@
       <%= detail.comment%>
       <% if current_user.id == detail.user_id && @order.status == 0%>
       <%= button_to 'delete' ,detail, method: :delete  %>
-      <%= detail.id%>
       <%end %>
       
       </td>
@@ -28,6 +27,9 @@
   <%end%>
   </tbody>
 </table>
+
+
+<% if @order.user_id == current_user.id %>
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -102,7 +104,7 @@
   </div>
 </div>
 
-
+ <%end%>
 
 
 
