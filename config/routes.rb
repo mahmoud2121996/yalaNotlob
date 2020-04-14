@@ -7,8 +7,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   default_url_options :host => "localhost:3000"
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+
+  devise_scope :user do  
+    get '/users/sign_out' => 'devise/sessions#destroy'     
+  end
   
   root to: 'user#index'
+
+  get '/friends/search/:input', to: 'friend#search'
 
   get '/friends', to: 'friend#friends_index'
 

@@ -15,11 +15,12 @@
         <a class="navbar-brand" href=<%= root_path%>>Yala-Notlob</a>
 
 
-        <a href="#" class="btn btn-warning" style="margin-left: 30px;">Home</a>
+        <a href=<%= root_path %> class="btn btn-warning" style="margin-left: 30px;">Home</a>
         <a href="#" class="btn btn-warning" style="margin-left: 10px;">Friends</a>
         <a href="#" class="btn btn-warning" style="margin-left: 10px">Groups</a>
         <a href="<%=orders_path%>" class="btn btn-warning" style="margin-left: 10px">Orders</a>
         <a href="<%=new_order_path%>" class="btn btn-warning" style="margin-left: 10px">new order</a>
+        <%= link_to "groups", groups_path, class: "btn btn-warning" %>
         
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -36,7 +37,6 @@
                   <h6 class="mt-2"><%= current_user.name %></h6>
                   <%= link_to "edit profile", edit_user_registration_path, method: "get", class: "btn btn-primary btn-md", :style => "margin-right:10px;margin-left:10px" %>
                   <%= link_to "logout", destroy_user_session_path, method: "delete", class: "btn btn-danger btn-md" %>
-                  <%= link_to "groups", groups_path %>
               </li>
           </ul>
         </div>

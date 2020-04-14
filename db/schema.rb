@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_04_13_134757) do
-=======
-ActiveRecord::Schema.define(version: 2020_04_12_183021) do
->>>>>>> feea79b1191bf9475db7c026329c4e09874b0758
+ActiveRecord::Schema.define(version: 2020_04_14_032733) do
 
   create_table "friends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -80,16 +76,16 @@ ActiveRecord::Schema.define(version: 2020_04_12_183021) do
     t.integer "joined", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.bigint "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "user_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "group_id", null: false
+  create_table "user_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["group_id"], name: "index_user_groups_on_group_id"
-    t.index ["user_id"], name: "index_user_groups_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -111,8 +107,6 @@ ActiveRecord::Schema.define(version: 2020_04_12_183021) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-<<<<<<< HEAD
-=======
   create_table "users_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
@@ -122,7 +116,6 @@ ActiveRecord::Schema.define(version: 2020_04_12_183021) do
     t.index ["user_id"], name: "index_users_groups_on_user_id"
   end
 
->>>>>>> feea79b1191bf9475db7c026329c4e09874b0758
   add_foreign_key "friends", "users", column: "friend_id", on_delete: :cascade
   add_foreign_key "friends", "users", on_delete: :cascade
   add_foreign_key "groups", "users", on_delete: :cascade
@@ -134,6 +127,6 @@ ActiveRecord::Schema.define(version: 2020_04_12_183021) do
   add_foreign_key "order_details", "orders", on_delete: :cascade
   add_foreign_key "order_details", "users", on_delete: :cascade
   add_foreign_key "orders", "users", on_delete: :cascade
-  add_foreign_key "user_groups", "groups", on_delete: :cascade
-  add_foreign_key "user_groups", "users", on_delete: :cascade
+  add_foreign_key "users_groups", "groups", on_delete: :cascade
+  add_foreign_key "users_groups", "users", on_delete: :cascade
 end

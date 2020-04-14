@@ -28,5 +28,20 @@ class FriendController < ApplicationController
     end
   end
 
+
+  def search
+    query = params['input'];
+    friends = User.joins(:friends).where(["name LIKE :query", query: "%#{query}%"]).where.not(id: current_user.id);
+
+    if friends.length() == 0
+        groups = Group.where(["name LIKE :query", query: "%#{query}%"])
+        msg = { :status => "ok", :message => groups, :type => "group" }
+    else
+        msg = { :status => "ok", :message => friends, :type => "friend" }
+    end
+    
+    render :json => msg
+end
+
 end
   
