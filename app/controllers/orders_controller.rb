@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   def index
     # @user_id = current_user.id
     @orders = current_user.orders
+    @orders = InvitedUser.where(user_id: current_user.id)
   end
 
   # def create
@@ -62,6 +63,21 @@ class OrdersController < ApplicationController
     redirect_to "/orders/new", :flash => { :error => message }
   end
 
+  def update
+    @order = Order.find(params[:id])
+    @order.status = 2
+    @order.status = 1
+    @order.save
+    redirect_to :orders
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.delete
+    redirect_to :orders
+  end
+  
+  
   def order_params
     params.require(:order).permit(:image)
   end

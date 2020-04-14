@@ -1,3 +1,9 @@
+<style>
+  .button{
+    display:inline-block
+  }
+</style>
+
 <p></p>
 
 <table class="table">
@@ -13,26 +19,27 @@
   </thead>
   <tbody>
   <% @orders.each do |order| %>
+    <% order = Order.find(order.order_id)%>
     <tr>
       <td><%= order.order_for%></td>
       <td><%= order.restaurant%></td>
       <td><%= order.invited%></td>
       <td><%= order.joined%></td>
-      <% if order.status == 0  && order.user_id == @user_id%>
+      <% if order.status == 0  && order.user_id == current_user.id%>
       <td>waiting</td>
       <td>
-       <%= link_to 'view' ,order , method: :get  %> 
-       <%= link_to 'finish' ,order , method: :put  %> 
-       <%= link_to 'cancel' ,order, method: :delete  %> 
+       <%= button_to 'view' ,order , method: :get ,class: "button"  %> 
+       <%= button_to 'finish' ,order , method: :put , class: "button"  %> 
+       <%= button_to 'cancel' ,order, method: :delete  , class: "button"%> 
       </td>
       <% elsif order.status == 0 %>
         <td>waiting</td>
         <td> 
-          <%= link_to 'view', order , method: :get %>
+          <%= button_to 'view', order , method: :get ,class:"button"%>
         </td>
       <% elsif order.status == 1 %>
       <td>finshed</td>
-      <td> <%= link_to 'view' ,order , method: :get  %> </td>
+      <td> <%= button_to 'view' ,order , method: :get  %> </td>
       <%end %>
       
     </tr>
