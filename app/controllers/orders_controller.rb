@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   def index
     # @user_id = current_user.id
     @orders = current_user.orders
+    @orders = InvitedUser.where(user_id: current_user.id)
   end
 
   # def create

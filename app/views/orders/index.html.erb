@@ -13,6 +13,7 @@
   </thead>
   <tbody>
   <% @orders.each do |order| %>
+    <% order = Order.find(order.order_id)%>
     <tr>
       <td><%= order.order_for%></td>
       <td><%= order.restaurant%></td>
