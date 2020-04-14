@@ -10,7 +10,7 @@ class Notifications {
             $("[data-behavior='notifications-link']").on("click", this.handleClick);
             setInterval((() => {
                 return this.getNewNotifications();
-            }), 1000);
+            }), 5000);
         }
     }
 

@@ -73,3 +73,10 @@ tmp/cache/bootsnap-compile-cache/e3/2d717a096bbe12
 tmp/cache/bootsnap-compile-cache/e9/1e5c4a029e449f
 tmp/cache/bootsnap-compile-cache/f5/e3202dd16f9b72
 tmp/cache/webpacker/last-compilation-digest-development
+log/development.log
+/log/development.loglog
+log/*
+log/development.log
+tmp/cache/webpacker/last-compilation-digest-development
+tmp/cache/bootsnap-load-path-cache
+node_modules/.yarn-integrity
