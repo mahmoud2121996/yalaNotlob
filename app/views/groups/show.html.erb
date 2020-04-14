@@ -32,7 +32,7 @@
                 <h2><%= @data[0].name%></h2>
                     <% if flash[:user_group_errors]%>
                         <div class="alert alert-danger">
-                            <% flash[:user_group_errors].each do |msg|%>
+                        <% flash[:user_group_errors] do |msg| %>
                             <li>
                                 <%= msg %>
                             </li>
