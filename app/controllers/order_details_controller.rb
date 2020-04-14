@@ -33,13 +33,14 @@ class OrderDetailsController < ApplicationController
   end
 
   def destroy
-    @user = InvitedUser.find(params[:id])
+    @user = OrderDetail.find(params[:id])
     id = @user.order_id
+    user_status = InvitedUser.where(order_id: id)
     @order = Order.find(id)
-    if @user.status == 0
+    if user_status == 0
       @order.invited = @order.invited - 1
       @order.save
-    elsif @user.status == 1
+    elsif user_status == 1
       @order.joined = @order.joined - 1
       @order.invited = @order.invited - 1
       @order.save
