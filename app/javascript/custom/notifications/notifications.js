@@ -64,11 +64,22 @@ class Notifications {
         return (
             "<div class='notif'>" +
             "<img src='" + notification.img + "' />" +
-            "<p>" + notification.content + "</p>" +
+            "<p>" + notification.content + this.generateAction(notification) + "</p>" +
             "<p class='notif-time'>" + this.timeSince(notification.at) + "</p>" +
             "</div>" + "<hr>"
         )
 
+    }
+
+    generateAction(notification) {
+        if (notification.notification_type === 2) {
+            if (!notification.reacted) {
+                return "<a href='/join/" + notification.order_id + "'" + " ><button class='btn btn-success'>Join</button></a> <a href='/cancel/" + notification.order_id + "'" + " ><button class='btn btn-danger'>Cancel</button></a>"
+            } else return ''
+
+        } else if (notification.notification_type === 3) {
+            return "<a href='/orders/" + notification.order_id + "'" + " ><button class='btn btn-info'>order</button></a>"
+        } else return ''
     }
 
     footer = "<div class='notif-footer'><a href='/all_notifications.html'>Show all notifications</a></div>"
@@ -77,7 +88,7 @@ class Notifications {
         const items = data.map(notification => this.formatNotification(notification));
         let unread_count = 0;
         data.forEach((notification) => {
-            if (!notification.read) {
+            if (!notification.read_at) {
                 unread_count += 1;
             }
         });

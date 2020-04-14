@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 
   get '/all_notifications', to: 'notifications#showAllNotifications'
 
+  get '/join/:order_id', to: 'notifications#join'
+  get '/cancel/:order_id', to: 'notifications#cancel'
+
   resources :notifications do
     collection do
       post :mark_as_read

@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # belongs_to :order 
   has_many :invited_users
-  has_many :orders, through: :invited_users
+  has_many :orders
   # has_and_belongs_to_many :users
   has_and_belongs_to_many :groups
   # has_many :orders

@@ -14,6 +14,7 @@ class FriendController < ApplicationController
       if( @friend.user_id == @friend.friend_id)
         redirect_to friends_path, notice: "You can't add your self"  
       elsif @friend.save
+        Notification.create(from_id: current_user.id, to_id: @friend.friend_id,notification_type: 1)
         redirect_to friends_path, notice: "Added successfully."
       elsif @friend.errors.details[:friend_id][0][:error] == :taken 
         redirect_to friends_path, notice: "Alredy your friend."
@@ -36,7 +37,6 @@ class FriendController < ApplicationController
   def search
     query = params['input'];
     friends = User.joins(:followers).where(["name LIKE :query", query: "%#{query}%"]).where.not(id: current_user.id);
-
     if friends.length() == 0
         groups = Group.where(["name LIKE :query", query: "%#{query}%"])
         msg = { :status => "ok", :message => groups, :type => "group" }

@@ -40,9 +40,12 @@
             <%if notification.notification_type === 1%>
               <p> added you as a friend </p>
             <% elsif notification.notification_type === 2%>
-              <p> invited you to his order <button class='btn btn-success'>Join</button> <button class='btn btn-danger'>Cancel</button> </p>
+              <p> invited you to his order 
+              <%if !notification.reacted%>
+              <a href='/join/<%= notification.order_id %>'><button class='btn btn-success'>Join</button></a> <a href='/cancel/<%= notification.order_id %>' ><button class='btn btn-danger'>Cancel</button></a>
+              <%end%>
             <% elsif notification.notification_type === 3%>
-              <p>joined your <button class='btn btn-info'>order</button>
+              <p>joined your <a href='/order/<%= notification.order_id %>'><button class='btn btn-info'>order</button></a>
             <%end%>
             <p class='notif-time'>  <%= notification.created_at %> </p> 
             </div>  <hr/>

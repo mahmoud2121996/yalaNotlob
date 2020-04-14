@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_032733) do
+ActiveRecord::Schema.define(version: 2020_04_14_204502) do
 
   create_table "friends", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_032733) do
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_groups_on_user_id"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_032733) do
     t.bigint "to_id", null: false
     t.bigint "order_id"
     t.integer "notification_type", null: false
-    t.datetime "read", null: false
+    t.datetime "read_at"
     t.boolean "reacted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_032733) do
     t.integer "status", null: false
     t.string "restaurant", null: false
     t.string "menu_pic"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.integer "invited", default: 0
     t.integer "joined", default: 0
     t.datetime "created_at", precision: 6, null: false
@@ -81,11 +81,6 @@ ActiveRecord::Schema.define(version: 2020_04_14_032733) do
     t.bigint "image_file_size"
     t.datetime "image_updated_at"
     t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "user_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -101,12 +96,13 @@ ActiveRecord::Schema.define(version: 2020_04_14_032733) do
     t.string "avatar_content_type"
     t.bigint "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-<<<<<<< HEAD
-  create_table "users_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -115,11 +111,9 @@ ActiveRecord::Schema.define(version: 2020_04_14_032733) do
     t.index ["user_id"], name: "index_users_groups_on_user_id"
   end
 
-=======
->>>>>>> 77897ea0c3d63505c7d3031e777e394691c6e63a
   add_foreign_key "friends", "users", column: "friend_id", on_delete: :cascade
   add_foreign_key "friends", "users", on_delete: :cascade
-  add_foreign_key "groups", "users", on_delete: :cascade
+  add_foreign_key "groups", "users"
   add_foreign_key "invited_users", "orders", on_delete: :cascade
   add_foreign_key "invited_users", "users", on_delete: :cascade
   add_foreign_key "notifications", "orders", on_delete: :cascade
@@ -127,7 +121,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_032733) do
   add_foreign_key "notifications", "users", column: "to_id", on_delete: :cascade
   add_foreign_key "order_details", "orders", on_delete: :cascade
   add_foreign_key "order_details", "users", on_delete: :cascade
-  add_foreign_key "orders", "users", on_delete: :cascade
+  add_foreign_key "orders", "users"
   add_foreign_key "users_groups", "groups", on_delete: :cascade
   add_foreign_key "users_groups", "users", on_delete: :cascade
 end

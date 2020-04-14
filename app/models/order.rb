@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
     validates :order_for, presence: true
-    validates :restaurant_name, presence: true
+    validates :restaurant, presence: true
 
     belongs_to :user 
     has_many :invited_users
