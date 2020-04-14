@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a href="#" class="btn btn-warning nav-link" >Home</a>
+                <a href="<%= root_path%>" class="btn btn-warning nav-link" >Home</a>
             </li>
             <li class="nav-item active">
               <a href="<%=friends_path%>" class="btn btn-warning nav-link" >Friends</a>
@@ -58,7 +58,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <li class='active ml-auto'>
-                    <%= link_to "logout", destroy_user_session_path, method: "delete", class: "btn btn-danger btn-md" %>
+                    <%= link_to "logout", destroy_user_session_path, method: "get", class: "btn btn-danger btn-md" %>
                   </li>
                 </ul>
         </div>
