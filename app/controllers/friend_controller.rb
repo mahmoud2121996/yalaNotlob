@@ -31,7 +31,7 @@ class FriendController < ApplicationController
 
   def search
     query = params['input'];
-    friends = User.joins(:friends).where(["name LIKE :query", query: "%#{query}%"]).where.not(id: current_user.id);
+    friends = User.joins(:followers).where(["name LIKE :query", query: "%#{query}%"]).where.not(id: current_user.id);
 
     if friends.length() == 0
         groups = Group.where(["name LIKE :query", query: "%#{query}%"])
