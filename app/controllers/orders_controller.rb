@@ -41,7 +41,8 @@ class OrdersController < ApplicationController
     if(@order.save())
       if(users != nil)
         users.each { |user| 
-        @order.invited_users.create([{ user_id: user, order_id: @order.id, status: 1}]) 
+        @order.invited_users.create([{ user_id: user, order_id: @order.id, status: 0}]) 
+        @order.invited_users.create([{ user_id: current_user.id, order_id: @order.id, status: 1}])
         @order.update(invited: @order.invited+1)
         Notification.create(from_id: current_user.id, to_id: user,order_id: @order.id, notification_type: 2)
       }

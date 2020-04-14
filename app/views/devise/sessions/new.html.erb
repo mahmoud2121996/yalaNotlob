@@ -2,15 +2,15 @@
 <head>
   <style>
     body{
-      margin-left: 450px;
+      margin-left: 500px;
       margin-top: 80px;
     }
     .form-group{
-      width: 400px;
+      width: 450px;
     }
       .makeborder{
         border: 2px solid lightgray;
-        width: 500px;
+        width: 550px;
         border-radius: 10px;
         padding: 45px;
       }
@@ -53,15 +53,15 @@
             <%= f.label :remember_me %>
           </div>
       <% end %>
-
+      <div style="display:flex; flex-direction:row;">
       <div class="actions">
         <%= f.submit "Log in", class: "btn btn-success btn-lg submitborder" %>
       </div>
 
       <div class="actions">
-        <%= link_to "New User?Sign Up", new_user_registration_path %>
+        <%= link_to "OR New User", new_user_registration_path, class: "btn btn-success btn-lg submitborder", :style => "width:200px;margin-left:50px" %>
       </div>
-
+      </div>
       <div style="display:flex;flex-direction:row;margin-top:30px;margin-left:150px">
         <div class="actions">
           <%= link_to "auth/facebook" do%>

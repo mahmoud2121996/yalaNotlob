@@ -2,7 +2,7 @@
 <head>
   <style>
     body{
-      margin-left: 450px;
+      margin-left: 500px;
       margin-top: 85px;
     }
     .form-group{
@@ -65,13 +65,14 @@
       <%= f.label :avatar %><br />
       <%= f.file_field :avatar, class: "btn btn-warning" %>
   </div><br />
-
+<div style="display:flex; flex-direction:row">
   <div class="actions">
     <%= f.submit "Sign up", class: "btn btn-success btn-lg submitborder" %>
   </div>
-
+<h1>OR</h1>
   <div class="actions">
-    <%= link_to "log in", new_user_session_path %>
+    <%= link_to "log in", new_user_session_path, class: "btn btn-primary btn-lg submitborder" %>
+  </div>
   </div>
 
 <% end %>

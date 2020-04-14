@@ -71,13 +71,7 @@ function filterFunction() {
                     let card = document.createElement('div');
                     card.setAttribute('class', `card w-30 ${a.getAttribute('id')}`);
                     let img = document.createElement('img');
-                    if(data.type == "friend"){
-                        img.setAttribute('src', '/assets/images/user.png');
-                    }else{
-                        img.setAttribute('src', '/assets/images/group.png');
-                    }
                     img.setAttribute('class', 'card-img-top');
-                    img.setAttribute('alt', 'Can\'t load image');
                     let card_body = document.createElement('div');
                     card_body.setAttribute('class', 'card-body');
                     let h5 = document.createElement('h5');
