@@ -19,7 +19,8 @@
       <td>
       <%= detail.comment%>
       <% if current_user.id == detail.user_id && @order.status == 0%>
-      <%= link_to 'delete' ,detail, method: :delete  %>
+      <%= button_to 'delete' ,detail, method: :delete  %>
+      <%= detail.id%>
       <%end %>
       
       </td>
