@@ -1,6 +1,6 @@
 .idea
 node_modules
-
+tmp/cache/bootsnap-load-path-cache
 /public/packs
 /public/packs-test
 /node_modules
