@@ -19,7 +19,7 @@ class UserGroupsController < ApplicationController
                         flash[:user_group_errors] = @user_groups.errors.full_messages
                     end
                 else
-                    flash[:group_member_errors] = ["User isn't a friend"]
+                    flash[:user_group_errors] = ["User isn't a friend"]
                 end 
 
                 else
