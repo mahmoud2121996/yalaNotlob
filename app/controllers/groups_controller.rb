@@ -3,12 +3,9 @@ class GroupsController < ApplicationController
     @groups = Group.where(user_id: current_user.id)
   end
 
-  def new
-  end
-
   def show
     @groups = Group.where(user_id: current_user.id)
-        @group = Group.find_by(id: params[:id], user_id: current_user.id)
+      @group = Group.find_by(id: params[:id], user_id: current_user.id)
         if @group.nil?
             flash[:group_error] = "There is no Group exists with this id"
             redirect_to :groups
@@ -32,16 +29,16 @@ class GroupsController < ApplicationController
             redirect_to :groups
         end
   end
-
-  def update
-  end
-
-  def edit
-  end
-
+  
   def destroy
-    @group = Group.find(params[:id])
+    @group = Group.find_by(id: params[:id], user_id: current_user.id)
+    if @group
         @group.destroy
         redirect_to :groups
+    else
+        flash[:group_error] = "You can't delete this group"
+        redirect_to :groups
+    end
+    
   end
 end
