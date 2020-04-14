@@ -1,2 +1,146 @@
-<h1>OrderDetails#index</h1>
-<p>Find me in app/views/order_details/index.html.erb</p>
+<p></p>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Item</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Price</th>
+      <th scope="col">Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @details.each do |detail| %>
+    <tr>
+    <td><%= User.find(detail.user_id).name%></td>
+      <td><%= detail.item_name%></td>
+      <td><%= detail.amount%></td>
+      <td><%= detail.price%></td>
+      <td>
+      <%= detail.comment%>
+      <% if current_user.id == detail.user_id && @order.status == 0%>
+      <%= link_to 'delete' ,detail, method: :delete  %>
+      <%end %>
+      
+      </td>
+    </tr>
+  <%end%>
+  </tbody>
+</table>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  <%= @order.invited%> friends invited,click to view
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">invited users</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+                <% @invited_users.each do |user| %>
+                <% if user.status == 0 %>
+                <h6><%= User.find(user.user_id).name %></h6>
+                <% if user.user_id != current_user.id && @order.status ==0 %>
+                <%= link_to 'remove', order_detail_path(:id => user.id) , method: :delete %>
+                <%end %>
+                <%end %>
+                <%end %>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+   <%= @order.joined%> friends joined,click to view
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">joined users</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="container">
+        <% @invited_users.each do |user| %>
+                    <% if user.status == 1 %>
+                        <h3><%= User.find(user.user_id).name %></h3>
+                            <% if user.user_id != current_user.id && @order.status ==0 %>
+                            <%= link_to 'remove', order_detail_path(:id => user.id) , method: :delete %>
+                            <%end %>
+                    <%end %>
+        <%end %>
+
+    </div>
+            
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <% if @order.status == 0 %>
+
+
+<div class="container" style="border-width: 10px; border-style:solid;border-radius:20px;padding:10px ; margin:10px;border-color:gray">
+  <h2>Add Order </h2>
+  <%= form_for(@newDetail,:url => {:controller => "order_details", :action => "create"}) do |f| %>
+  <div class="form-inline">
+    <div class="form-group">
+      <label for="item">Item:</label>
+      <input type="text" class="form-control" id="email" placeholder="Enter Item" name="item" style="margin:10px">
+    </div>
+    
+    <div class="form-group">
+      <label for="amount">Amount:</label>
+      <input type="number" id="quantity" name="amount" min="1" style="width:50px; margin:10px">
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="number" id="quantity" name="price" min="1" style="width:50px; margin:10px">
+    </div>
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <input type="text" class="form-control" id="pwd" placeholder="Enter Comment" name="comment" style="margin:10px">
+    </div>
+     <input type="hidden" name="order_id" value = <%= @order.id%> >
+    <button type="submit" class="btn btn-success" style="width:100px">Add</button>
+  </div>
+  <% end %>
+</div>
+
+<%end %>

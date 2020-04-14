@@ -82,7 +82,7 @@ class Notifications {
             }
         });
         $("[data-behavior='unread-count']").text(unread_count);
-        if (items.length === 0) return $("[data-behavior='notification-items']").html("No new notifications")
+        if (items.length === 0) return $("[data-behavior='notification-items']").html("<div class='notif'>No new notifications</div>")
         else {
             items.push(this.footer)
             return $("[data-behavior='notification-items']").html(items);
