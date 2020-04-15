@@ -31,12 +31,12 @@ class OrdersController < ApplicationController
   def create
     users = params['id'];
     groups = params['groups']
+    @order = Order.create(order_params)
     @order = Order.new;
     @order.user_id = current_user.id;
     @order.order_for = params['order_for'];
     @order.restaurant = params['restaurant_name'];
     @order.status = 0;
-    @order.image = params[order_params]
     
 
     if(@order.save())
@@ -50,9 +50,11 @@ class OrdersController < ApplicationController
       elsif(groups != nil)
         groups.each { |group|
           @group = Group.find(group)
-          members = @group.group_members
+          members = @group.user_groups
           members.each { |member| 
           @order.invited_users.create([{ user_id: member.user_id, order_id: @order.id, status: 0}]) 
+          @order.invited_users.create([{ user_id: current_user.id, order_id: @order.id, status: 1}])
+          @order.update(invited: @order.invited+1)
           Notification.create(from_id: current_user.id, to_id: member, order_id: @order.id, notification_type: 2)
         }
         }
@@ -65,7 +67,6 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order.status = 2
     @order.status = 1
     @order.save
     redirect_to :orders

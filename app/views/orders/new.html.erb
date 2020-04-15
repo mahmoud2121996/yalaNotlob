@@ -1,5 +1,3 @@
-
-
 <%= form_for Order.new, url: orders_path, :multipart => true, local: true do |form| %>
     <div class="row mt-3">
     
@@ -10,6 +8,7 @@
                 <select name="order_for" class="form-control" id="selectTypeControlSelect1">
                     <option>Lunch</option>
                     <option>Breakfast</option>
+                    <option>Dinner</option>
                 </select>
             </div>
             <div class="form-group">
@@ -20,20 +19,19 @@
             <div class="form-group dropdown">
                 <label for="friendControlInput1">Friends</label>
                 <div id="myDropdown" class="dropdown-content show">
-                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <input type="text" placeholder="Let's invite.." id="myInput" onkeyup="filterFunction()">
                     <div id="results">
                     </div>
                 </div>
             </div> 
-            <small id="emailHelp" class="form-text text-muted">You can write a friend name or group.</small>
             <div class="form-group">
-            <%= form.file_field :image, class: "form-control-file", id: "menuControlFile1" %>
+            <%= form.file_field :image, class: "form-control-file", id: "menuControlFile1", class:'btn btn-warning' %>
             </div>
-            <%= form.submit type:'submit', class:'btn btn-primary btn-block'%>
+            <%= form.submit type:'submit', class:'btn btn-success btn-block'%>
     
         </div>
         <div class="col card">
-            <h3>Friends invited</h3>
+            <h3 style="margin-left:150px;margin-top:20px;color:blue;">Your Invited Friends</h3>
             <div id="invited" class="row">
     
             <div>
@@ -59,6 +57,13 @@ function filterFunction() {
         for (i = 0; i < data.message.length; i++) {
             let a = document.createElement('a');
             a.innerHTML = data.message[i].name;
+            a.style.cursor = "pointer";
+            a.addEventListener("mouseover", function() {
+            a.style.backgroundColor = "lightblue";
+            });
+            a.addEventListener("mouseout", function() {
+            a.style.backgroundColor = "white";
+            });
             a.setAttribute("class", "result");
             a.setAttribute("id", data.message[i].id);
             a.addEventListener("click", () => {
@@ -69,9 +74,11 @@ function filterFunction() {
                     added.remove();
                 }else{
                     let card = document.createElement('div');
-                    card.setAttribute('class', `card w-30 ${a.getAttribute('id')}`);
+                    card.style.marginLeft = "50px";
+                    card.setAttribute('class', `${a.getAttribute('id')}`);
                     let img = document.createElement('img');
                     img.setAttribute('class', 'card-img-top');
+                    img.style.marginLeft = "30px";
                     let card_body = document.createElement('div');
                     card_body.setAttribute('class', 'card-body');
                     let h5 = document.createElement('h5');
@@ -79,7 +86,16 @@ function filterFunction() {
                     h5.innerHTML = a.innerHTML;
                     let btn = document.createElement('a');
                     btn.setAttribute('class', 'btn btn-danger');
-                    btn.innerHTML = 'Remove';
+                    btn.style.color = "white";
+                    btn.addEventListener("mouseover", function() {
+                        btn.style.backgroundColor = "orange";
+                        btn.style.color = "black";
+                    });
+                    btn.addEventListener("mouseout", function() {
+                        btn.style.backgroundColor = "red";
+                        btn.style.color = "white";
+                    });
+                    btn.innerHTML = 'remove';
                     let hidden = document.createElement('input');
                     hidden.setAttribute('type', 'hidden');
                     if(data.type == "friend"){
@@ -87,7 +103,7 @@ function filterFunction() {
                         
                         if(groupsAdded.length > 0){
                             add = false;
-                            $('.errorMsg').html('<li id="last" class="alert alert-danger" role="alert"><b>You can not add friends and groups together</b></li>');
+                            $('.errorMsg').html('<li id="last" class="alert alert-danger" role="alert"><b>sorry, add friend or group only</b></li>');
                             $(".alert").fadeOut(7000);
                         }else{
                             hidden.setAttribute('name', 'id[]');
@@ -99,7 +115,7 @@ function filterFunction() {
 
                         if(idsAdded.length > 0){
                             add = false;
-                            $('.errorMsg').html('<li id="last" class="alert alert-danger" role="alert"><b>You can not add friends and groups together</b></li>');
+                            $('.errorMsg').html('<li id="last" class="alert alert-danger" role="alert"><b>sorry, add friend or group only</b></li>');
                             $(".alert").fadeOut(7000);
                         }else{
                             hidden.setAttribute('name', 'groups[]');

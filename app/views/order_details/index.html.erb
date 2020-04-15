@@ -16,10 +16,10 @@
       <td><%= detail.item_name%></td>
       <td><%= detail.amount%></td>
       <td><%= detail.price%></td>
-      <td>
-      <%= detail.comment%>
+      <td style="display:flex;flex-direction:row; justify-content:space-between;align-items:center;">
+      <%= detail.comment %>
       <% if current_user.id == detail.user_id && @order.status == 0%>
-      <%= button_to 'delete' ,detail, method: :delete  %>
+      <%= button_to 'delete' ,detail, method: :delete, class: "btn btn-danger"  %>
       <%end %>
       
       </td>
@@ -116,7 +116,7 @@
 
 
 
- <% if @order.status == 0 %>
+ <% if @order.status == 0 && InvitedUser.where(order_id: @order.id,user_id: current_user.id)[0].status == 1 %>
 
 
 <div class="container" style="border-width: 10px; border-style:solid;border-radius:20px;padding:10px ; margin:10px;border-color:gray">

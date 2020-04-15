@@ -16,9 +16,9 @@
             <ul class="list-group">
                 <% @data[1].each do |group| %>
                 <div class="group">
-                    <p> <%= group.name %>  </p>
+                    <h2> <%= group.name %>  </h2>
                         <%= link_to 'delete', group, method: :delete, class:"btn btn-danger" %>
-                        <%=link_to 'show', group, class:"btn btn-primary showButton"%>
+                        <%=link_to 'add user', group, class:"btn btn-primary showButton"%>
                    
                     </div>
                 <% end %>
@@ -47,13 +47,18 @@
                             <%= submit_tag("Add", class: "btn btn-dark", style:"margin-left:30px") %>
                         </div>
                     <% end %>
+                    <div style="margin-top:20px;margin-left:70px">
                 <% if @data[2] && @data[1].length > 0%>
-                    <% @data[2].each do |user|%>
-                    <p><%= user["name"] %> <%= link_to 'delete', user_group_url(:id =>@data[0].id, :user_id => user["id"]), method: :delete, class:"btn btn-danger" %></p>
+                    <% @data[2].each do |user| %>
+                        <p>
+                            <%= user["name"] %> 
+                                <%= link_to 'delete', user_group_url(:id =>@data[0].id, :user_id => user["id"]), method: :delete, class:"btn btn-danger" %>
+                        </p>
                     <% end %>
                 <% else %>
                     <p>There is no users yet </p>
                 <% end %>
+                </div>
             <% end %>
 
         </div>

@@ -27,19 +27,19 @@
       <td><%= order.joined%></td>
       <% if order.status == 0  && order.user_id == current_user.id%>
       <td>waiting</td>
-      <td>
-       <%= button_to 'view' ,order , method: :get ,class: "button"  %> 
-       <%= button_to 'finish' ,order , method: :put , class: "button"  %> 
-       <%= button_to 'cancel' ,order, method: :delete  , class: "button"%> 
+      <td style="display:flex;flex-direction:row;">
+       <%= button_to 'view' ,order , method: :get ,class: "btn btn-primary btn-sm"  %> 
+       <%= button_to 'finish' ,order , method: :put , class: "btn btn-warning btn-sm"  %> 
+       <%= button_to 'cancel' ,order, method: :delete  , class: "btn btn-danger btn-sm"%> 
       </td>
       <% elsif order.status == 0 %>
         <td>waiting</td>
         <td> 
-          <%= button_to 'view', order , method: :get ,class:"button"%>
+          <%= button_to 'view', order , method: :get ,class:"btn btn-primary btn-sm"%>
         </td>
       <% elsif order.status == 1 %>
       <td>finshed</td>
-      <td> <%= button_to 'view' ,order , method: :get  %> </td>
+      <td> <%= button_to 'view' ,order , method: :get, class: "btn btn-primary btn-sm"  %> </td>
       <%end %>
       
     </tr>
