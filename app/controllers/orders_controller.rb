@@ -29,14 +29,16 @@ class OrdersController < ApplicationController
   end
 
   def create
+    puts params
     users = params['id'];
     groups = params['groups']
-    @order = Order.create(order_params)
     @order = Order.new;
     @order.user_id = current_user.id;
+    @order.image = params[:image]
     @order.order_for = params['order_for'];
     @order.restaurant = params['restaurant_name'];
     @order.status = 0;
+    
     
 
     if(@order.save())
@@ -78,8 +80,8 @@ class OrdersController < ApplicationController
     redirect_to :orders
   end
   
-  
-  def order_params
-    params.require(:order).permit(:image)
-  end
+  # private
+  # def order_params
+  #   params.require(:order).permit(:image)
+  # end
 end

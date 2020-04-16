@@ -1,4 +1,4 @@
-<%= form_for Order.new, url: orders_path, :multipart => true, local: true do |form| %>
+<%= form_for @order, url: orders_path, :multipart => true, local: true do |form| %>
     <div class="row mt-3">
     
         <div class="col">
@@ -6,8 +6,8 @@
             <div class="form-group">
                 <label for="orderTypeControlSelect1">Order for</label>
                 <select name="order_for" class="form-control" id="selectTypeControlSelect1">
-                    <option>Lunch</option>
                     <option>Breakfast</option>
+                    <option>Lunch</option>
                     <option>Dinner</option>
                 </select>
             </div>
