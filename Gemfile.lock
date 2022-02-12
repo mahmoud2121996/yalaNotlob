@@ -143,8 +143,8 @@ GEM
     mysql2 (0.5.3-x64-mingw32)
     mysql2 (0.5.3-x86-mingw32)
     mysql2 (0.5.3-x86-mswin32-60)
-    nio4r (2.5.2)
-    nio4r (2.5.2-java)
+    nio4r (2.5.8)
+    nio4r (2.5.8-java)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     nokogiri (1.10.9-java)
@@ -179,9 +179,9 @@ GEM
       terrapin (~> 0.6.0)
     popper_js (1.16.0)
     public_suffix (4.0.3)
-    puma (4.3.3)
+    puma (4.3.11)
       nio4r (~> 2.0)
-    puma (4.3.3-java)
+    puma (4.3.11-java)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-proxy (0.6.5)
@@ -312,7 +312,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-google-oauth2
   paperclip (~> 6.1)
-  puma (~> 4.1)
+  puma (~> 4.3)
   rails (~> 6.0.2, >= 6.0.2.2)
   rmagick
   sass-rails (>= 6)
